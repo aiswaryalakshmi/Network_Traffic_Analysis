@@ -14,16 +14,16 @@ The code parses the byte stream and finds and stores all the required header fie
  
 2.	
 	1.	The first two transactions are traced as follows:
-		i.	The first PSH packet from the sender is taken.
-		ii.	The next packet from the client having the sequence number equal to the acknowledge number in the above PSH packet is added to the result. This completes one transaction.
-iii.	The next packet from the sender having the sequence number equal to the acknowledge number in the packet mentioned in (b) is added. 
-iv.	The last packet is from the client having the sequence number equal to the acknowledge number in the packet mentioned in (c). This completes the second transaction.
+		1.	The first PSH packet from the sender is taken.
+		2.	The next packet from the client having the sequence number equal to the acknowledge number in the above PSH packet is added to the result. This completes one transaction.
+		3.	The next packet from the sender having the sequence number equal to the acknowledge number in the packet mentioned in (b) is added. 
+		4.	The last packet is from the client having the sequence number equal to the acknowledge number in the packet mentioned in (c). This completes the second transaction.
  
-b.	Throughput is calculated as total number of bytes transmitted per unit time (in seconds). The entire packet length including all the headers is taken for calculating the throughput.
+	1.	Throughput is calculated as total number of bytes transmitted per unit time (in seconds). The entire packet length including all the headers is taken for calculating the throughput.
  
-c.	Loss rate is (number of packets not received)/total packets sent
+	1.	Loss rate is (number of packets not received)/total packets sent
  
-d.	Average RTT can be calculated by dividing the total time taken by the number of transactions.
+	1.	Average RTT can be calculated by dividing the total time taken by the number of transactions.
  
 ### Flow 0:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSS = 1460 <br>
@@ -56,16 +56,16 @@ Below are the filters used to capture the pcap files: <br>
  
 The code parses the byte stream and finds and stores all the required header field values. In a single pass, all the conditions relevant to the below questions are handled which reduces the complexity of the program.
 1.	The http part (data of tcp) is parsed to find if the packet is a HTTP request or response packet.
-	a.	If the http part from the client has GET keyword in the first 4 bytes, then it is the HTTP request packet.
-	b.	If the http part from the server has HTTP keyword in the first 4 bytes, then it is the HTTP response packet.
-	c.	Then the requests and responses are arranged by matching the acknowledgement numbers of the requests to the sequence numbers of the responses.
+	1.	If the http part from the client has GET keyword in the first 4 bytes, then it is the HTTP request packet.
+	1.	If the http part from the server has HTTP keyword in the first 4 bytes, then it is the HTTP response packet.
+	1.	Then the requests and responses are arranged by matching the acknowledgement numbers of the requests to the sequence numbers of the responses.
  
  
 2.	The following logic is used to find the HTTP protocol:
-a.	The total number of TCP flows is calculated for all the 3 pcap files.
-i.	If the total number of flows is 1, then it is HTTP 2.0. It is because it uses pipelining mechanism and sends all the objects in a single flow.
-ii.	If the total number of flows is equal to the total number of HTTP request/response transactions, then it is HTTP 1.0. This is because a new TCP connection is established for sending every object in the web page.
-iii.	If both the above conditions do not match, then it is HTTP 1.1. It usually creates 6 TCP flows for loading a web page depending on the client’s browser configuration.
+	1.	The total number of TCP flows is calculated for all the 3 pcap files.
+		2.	If the total number of flows is 1, then it is HTTP 2.0. It is because it uses pipelining mechanism and sends all the objects in a single flow.
+		2.	If the total number of flows is equal to the total number of HTTP request/response transactions, then it is HTTP 1.0. This is because a new TCP connection is established for sending every object in the web page.
+		2.	If both the above conditions do not match, then it is HTTP 1.1. It usually creates 6 TCP flows for loading a web page depending on the client’s browser configuration.
  
 3.	From the results below, it has been observed that the site loads the fastest under HTTP 1.0 protocol and slowest under the HTTP 2.0 protocol. <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Most packets: HTTP 1.0 <br>
