@@ -11,20 +11,20 @@
 
 The code parses the byte stream and finds and stores all the required header field values. In a single pass, all the conditions relevant to the below questions are handled which reduces the complexity of the program.
 1.	Number of TCP flows is calculated by counting the number of SYN/FIN pairs in the pcap file.
- 
+![GitHub Logo](/images/Picture1.png)
 2.	
 	1.	The first two transactions are traced as follows:
 		1.	The first PSH packet from the sender is taken.
 		2.	The next packet from the client having the sequence number equal to the acknowledge number in the above PSH packet is added to the result. This completes one transaction.
 		3.	The next packet from the sender having the sequence number equal to the acknowledge number in the packet mentioned in (b) is added. 
 		4.	The last packet is from the client having the sequence number equal to the acknowledge number in the packet mentioned in (c). This completes the second transaction.
- 
+![GitHub Logo](/images/Picture2.png)
 	1.	Throughput is calculated as total number of bytes transmitted per unit time (in seconds). The entire packet length including all the headers is taken for calculating the throughput.
- 
+![GitHub Logo](/images/Picture3.png)
 	1.	Loss rate is (number of packets not received)/total packets sent
- 
+![GitHub Logo](/images/Picture4.png)
 	1.	Average RTT can be calculated by dividing the total time taken by the number of transactions.
- 
+![GitHub Logo](/images/Picture5.png)
 ### Flow 0:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSS = 1460 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RTT = 0.00018 <br>
