@@ -26,19 +26,19 @@ c.	Loss rate is (number of packets not received)/total packets sent
 d.	Average RTT can be calculated by dividing the total time taken by the number of transactions.
  
 ### Flow 0:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSS = 1460
-RTT = 0.00018
-p = 0.0043
-Theorectial Throughput = 107121430.22563
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSS = 1460 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RTT = 0.00018 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = 0.0043 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Theorectial Throughput = 107121430.22563
 ### Flow 1:
-MSS = 1460
-RTT = 0.0007
-p = 0.0133 
-Theorectial Throughput = 15658168.2913
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSS = 1460 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RTT = 0.0007 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = 0.0133 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Theorectial Throughput = 15658168.2913 <br>
 The theoretical throughput values for the above two flows are much larger compared to the empirical values. The deviation is because in real time, the packets do not always have the MSS size and also though the RTT is estimated after every round-trip, since the packets take different routes everytime, there is a possibility for a wide deviation in the empirical throughput value compared to the theoretical one.
 ### Flow 2:
-MSS = 1460
-RTT = 0.00063
-p = 0.0
-Theorectial Throughput = Infinity
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSS = 1460 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RTT = 0.00063 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = 0.0 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Theorectial Throughput = Infinity <br>
 The throughput cannot be practically infinity because of the constraints in the real world like bandwidth, etc.
