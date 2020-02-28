@@ -12,7 +12,7 @@
 The code parses the byte stream and finds and stores all the required header field values. In a single pass, all the conditions relevant to the below questions are handled which reduces the complexity of the program.
 1.	Number of TCP flows is calculated by counting the number of SYN/FIN pairs in the pcap file.
  
-2.	a.	The first two transactions are traced as follows:
+2.	..1.	The first two transactions are traced as follows:
 i.	The first PSH packet from the sender is taken.
 ii.	The next packet from the client having the sequence number equal to the acknowledge number in the above PSH packet is added to the result. This completes one transaction.
 iii.	The next packet from the sender having the sequence number equal to the acknowledge number in the packet mentioned in (b) is added. 
