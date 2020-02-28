@@ -61,13 +61,14 @@ The code parses the byte stream and finds and stores all the required header fie
 	1.	If the http part from the server has HTTP keyword in the first 4 bytes, then it is the HTTP response packet.
 	1.	Then the requests and responses are arranged by matching the acknowledgement numbers of the requests to the sequence numbers of the responses.
 ![](/images/Picture11.png)
+![](/images/Picture12.png)
  
 2.	The following logic is used to find the HTTP protocol:
 	1.	The total number of TCP flows is calculated for all the 3 pcap files.
 		1.	If the total number of flows is 1, then it is HTTP 2.0. It is because it uses pipelining mechanism and sends all the objects in a single flow.
 		1.	If the total number of flows is equal to the total number of HTTP request/response transactions, then it is HTTP 1.0. This is because a new TCP connection is established for sending every object in the web page.
 		1.	If both the above conditions do not match, then it is HTTP 1.1. It usually creates 6 TCP flows for loading a web page depending on the client’s browser configuration.
-![](/images/Picture12.png)
+![](/images/Picture13.png)
 3.	From the results below, it has been observed that the site loads the fastest under HTTP 1.0 protocol and slowest under the HTTP 2.0 protocol. <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Most packets: HTTP 1.0 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Least packets: HTTP 2.0 <br>
@@ -75,4 +76,4 @@ The code parses the byte stream and finds and stores all the required header fie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Least raw bytes: HTTP 1.0 <br>
 	Maximum number of packets are recorded for HTTP 1.0. This is because the server sends each object in a separate TCP connection. Whereas, HTTP 2.0 with the least number of flows and transactions has the minimum number of packets as well.
 	The raw bytes length is maximum in HTTP 2.0. This is because of the addition of encryption information in the packets.
-![](/images/Picture13.png)
+![](/images/Picture14.png)
