@@ -47,8 +47,8 @@ After every set of acknowledgements, the congestion window size is recalculated 
  
 
 4.	The number of retransmissions is calculated at the sender end.
-a.	If there are at least three packets from the client with the acknowledgement number equal to the sequence number of a retransmitted packet, then it is retransmission due to triple duplicate ack.
-b.	Otherwise, if there is no acknowledgement from the client before the packet is retransmitted, then it is due to timeout.
+..1.	If there are at least three packets from the client with the acknowledgement number equal to the sequence number of a retransmitted packet, then it is retransmission due to triple duplicate ack.
+..1.	Otherwise, if there is no acknowledgement from the client before the packet is retransmitted, then it is due to timeout.
 
 Below are the filters used to capture the pcap files: <br>
 
