@@ -12,9 +12,10 @@
 The code parses the byte stream and finds and stores all the required header field values. In a single pass, all the conditions relevant to the below questions are handled which reduces the complexity of the program.
 1.	Number of TCP flows is calculated by counting the number of SYN/FIN pairs in the pcap file.
  
-2.	..1.	The first two transactions are traced as follows:
-i.	The first PSH packet from the sender is taken.
-ii.	The next packet from the client having the sequence number equal to the acknowledge number in the above PSH packet is added to the result. This completes one transaction.
+2.	
+	1.	The first two transactions are traced as follows:
+		i.	The first PSH packet from the sender is taken.
+		ii.	The next packet from the client having the sequence number equal to the acknowledge number in the above PSH packet is added to the result. This completes one transaction.
 iii.	The next packet from the sender having the sequence number equal to the acknowledge number in the packet mentioned in (b) is added. 
 iv.	The last packet is from the client having the sequence number equal to the acknowledge number in the packet mentioned in (c). This completes the second transaction.
  
@@ -47,17 +48,17 @@ After every set of acknowledgements, the congestion window size is recalculated 
  
 
 4.	The number of retransmissions is calculated at the sender end.
-..1.	If there are at least three packets from the client with the acknowledgement number equal to the sequence number of a retransmitted packet, then it is retransmission due to triple duplicate ack.
-..1.	Otherwise, if there is no acknowledgement from the client before the packet is retransmitted, then it is due to timeout.
+	1.	If there are at least three packets from the client with the acknowledgement number equal to the sequence number of a retransmitted packet, then it is retransmission due to triple duplicate ack.
+	1.	Otherwise, if there is no acknowledgement from the client before the packet is retransmitted, then it is due to timeout.
 
 Below are the filters used to capture the pcap files: <br>
 
  
 The code parses the byte stream and finds and stores all the required header field values. In a single pass, all the conditions relevant to the below questions are handled which reduces the complexity of the program.
 1.	The http part (data of tcp) is parsed to find if the packet is a HTTP request or response packet.
-a.	If the http part from the client has GET keyword in the first 4 bytes, then it is the HTTP request packet.
-b.	If the http part from the server has HTTP keyword in the first 4 bytes, then it is the HTTP response packet.
-c.	Then the requests and responses are arranged by matching the acknowledgement numbers of the requests to the sequence numbers of the responses.
+	a.	If the http part from the client has GET keyword in the first 4 bytes, then it is the HTTP request packet.
+	b.	If the http part from the server has HTTP keyword in the first 4 bytes, then it is the HTTP response packet.
+	c.	Then the requests and responses are arranged by matching the acknowledgement numbers of the requests to the sequence numbers of the responses.
  
  
 2.	The following logic is used to find the HTTP protocol:
