@@ -63,9 +63,9 @@ The code parses the byte stream and finds and stores all the required header fie
  
 2.	The following logic is used to find the HTTP protocol:
 	1.	The total number of TCP flows is calculated for all the 3 pcap files.
-		2.	If the total number of flows is 1, then it is HTTP 2.0. It is because it uses pipelining mechanism and sends all the objects in a single flow.
-		2.	If the total number of flows is equal to the total number of HTTP request/response transactions, then it is HTTP 1.0. This is because a new TCP connection is established for sending every object in the web page.
-		2.	If both the above conditions do not match, then it is HTTP 1.1. It usually creates 6 TCP flows for loading a web page depending on the client’s browser configuration.
+		1.	If the total number of flows is 1, then it is HTTP 2.0. It is because it uses pipelining mechanism and sends all the objects in a single flow.
+		1.	If the total number of flows is equal to the total number of HTTP request/response transactions, then it is HTTP 1.0. This is because a new TCP connection is established for sending every object in the web page.
+		1.	If both the above conditions do not match, then it is HTTP 1.1. It usually creates 6 TCP flows for loading a web page depending on the client’s browser configuration.
  
 3.	From the results below, it has been observed that the site loads the fastest under HTTP 1.0 protocol and slowest under the HTTP 2.0 protocol. <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Most packets: HTTP 1.0 <br>
